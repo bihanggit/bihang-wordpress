@@ -1,0 +1,14 @@
+.oklink-currency {
+	width: 65px;
+}
+.oklink-price {
+	width: 106px;
+}
+.oklink-toggle {
+	cursor: pointer;
+}
+.oklink-advanced {
+	/*
+	display: none;
+	margin-top: 7px; */
+}
