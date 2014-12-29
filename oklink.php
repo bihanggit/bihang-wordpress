@@ -103,7 +103,6 @@ class WP_Oklink {
         $client = OKlink::withApiKey($api_key, $api_secret);
         $params = array("price" => floatval($args['price_string']),"price_currency" => $args['price_currency_iso'],"name" => $args["name"]);
         $response = $client->buttonsButton($params);
-        var_dump($response->button);
         $button_html = OKLinkUtil::generateButton($response->button);
       } catch (Exception $e) {
         $msg = $e->getMessage();
