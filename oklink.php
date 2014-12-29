@@ -12,7 +12,6 @@ define('OKLINK_PATH', plugin_dir_path( __FILE__ ));
 define('OKLINK_URL', plugins_url( '', __FILE__ ));
 
 require_once(OKLINK_PATH . 'lib/OKLink.php');
-require_once(OKLINK_PATH . 'lib/OKLinkUtil.php');
 require_once(OKLINK_PATH . 'widget.php');
 
 class WP_Oklink {

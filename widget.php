@@ -1,30 +1,5 @@
 <?php
 
-/* 
-
-Copyright (C) 2014 Coinbase Inc.
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
-*/
-
-/**
- * Registers the Coinbase Button widget
- *
- */
-
 class Oklink_Button extends WP_Widget { 
 
   private $currencies = array( 'BTC' => 'BTC', 'USD' => 'USD', 'CNY' => 'CNY', );
@@ -93,7 +68,7 @@ class Oklink_Button extends WP_Widget {
           $Oklink = OkLink::withApiKey($api_key, $api_secret);
           $response = $Oklink->buttonsButton($button_args);
           $button = $response->button;
-          $button_html =  OKLinkUtil::generateBUtton($button);
+          $button_html =  "<a class=\"oklink-button\" target=\"_blank\" data-style=\"\" data-code=\"\" href=\"".OklinkBase::WEB_BASE."merchant/mPayOrderStemp1.do?buttonid=".$button->id."\"><img alt=\"\" src=\"https://www.oklink.com/image/merchant/button_one_small.png\"></a>";
         } catch (Exception $e) {
           $msg = $e->getMessage();
           error_log($msg);
