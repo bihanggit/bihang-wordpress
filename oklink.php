@@ -3,8 +3,8 @@
  * Plugin Name: Oklink
  * Plugin URI: https://github.com/oklink/oklink-wordpress
  * Description: Add Oklink payment buttons to your WordPress site.
- * Version: 1.0
- * Author: Coinlink Inc.
+ * Version: 1.1
+ * Author: Oklink Inc.
  * Author URI: https://oklink.com
  * License: GPLv2 or later
  */
@@ -103,7 +103,8 @@ class WP_Oklink {
         $client = OKlink::withApiKey($api_key, $api_secret);
         $params = array("price" => floatval($args['price_string']),"price_currency" => $args['price_currency_iso'],"name" => $args["name"]);
         $response = $client->buttonsButton($params);
-        $button_html = OKLinkUtil::generateButton($response->button);
+        $button = $response->button;
+        $button_html =  "<a class=\"oklink-button\" target=\"_blank\" data-style=\"\" data-code=\"\" href=\"".OklinkBase::WEB_BASE."merchant/mPayOrderStemp1.do?buttonid=".$button->id."\"><img alt=\"\" src=\"https://www.oklink.com/image/merchant/button_one_small.png\"></a>";
       } catch (Exception $e) {
         $msg = $e->getMessage();
         error_log($msg);

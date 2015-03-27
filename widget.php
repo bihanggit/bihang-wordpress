@@ -146,7 +146,7 @@ class Oklink_Button extends WP_Widget {
             <?php
             foreach ($this->currencies as $k => $v) {
               echo '<option value="' . $k . '"'
-                . ( $k == $price_currency_iso ? ' selected="selected"' : '' )
+                . ( $k == esc_attr( $price_currency ) ? ' selected="selected"' : '' )
                 . '>' . $v . "</option>\n";
             }
             ?>
