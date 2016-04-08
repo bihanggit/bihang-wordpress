@@ -1,6 +1,6 @@
 <?php
 
-class Oklink_Button extends WP_Widget { 
+class Bihang_Button extends WP_Widget { 
 
   private $currencies = array( 'BTC' => 'BTC', 'USD' => 'USD', 'CNY' => 'CNY', );
 
@@ -10,9 +10,9 @@ class Oklink_Button extends WP_Widget {
   public function __construct() {
     //global $wid, $wname;
     parent::__construct(
-      'Oklink_button', // Base ID
-      'Oklink Button', // Name
-      array( 'description' => __( 'Displays a Oklink button in your sidebar', 'text_domain' ), ) // Args
+      'Bihang_button', // Base ID
+      'Bihang Button', // Name
+      array( 'description' => __( 'Displays a Bihang button in your sidebar', 'text_domain' ), ) // Args
     );
     //add_action('admin_enqueue_scripts', array(&$this, 'admin_styles'), 1);
   }
@@ -61,23 +61,23 @@ class Oklink_Button extends WP_Widget {
       echo $cached;
     } else {
 
-      $api_key = wpsf_get_setting( 'oklink', 'general', 'api_key' );
-      $api_secret = wpsf_get_setting( 'oklink', 'general', 'api_secret' );
+      $api_key = wpsf_get_setting( 'bihang', 'general', 'api_key' );
+      $api_secret = wpsf_get_setting( 'bihang', 'general', 'api_secret' );
       if( $api_key && $api_secret ) {
         try {
-          $Oklink = OkLink::withApiKey($api_key, $api_secret);
-          $response = $Oklink->buttonsButton($button_args);
+          $Bihang = Bihang::withApiKey($api_key, $api_secret);
+          $response = $Bihang->buttonsButton($button_args);
           $button = $response->button;
-          $button_html =  "<a class=\"oklink-button\" target=\"_blank\" data-style=\"\" data-code=\"\" href=\"".OklinkBase::WEB_BASE."merchant/mPayOrderStemp1.do?buttonid=".$button->id."\"><img alt=\"\" src=\"https://www.oklink.com/image/merchant/button_one_small.png\"></a>";
+          $button_html =  "<a class=\"bihang-button\" target=\"_blank\" data-style=\"\" data-code=\"\" href=\"".BihangBase::WEB_BASE."merchant/mPayOrderStemp1.do?buttonid=".$button->id."\"><img alt=\"\" src=\"https://www.bihang.com/image/merchant/button_one_small.png\"></a>";
         } catch (Exception $e) {
           $msg = $e->getMessage();
           error_log($msg);
-          echo "There was an error connecting to Oklink: $msg. Please check your internet connection and API credentials.";
+          echo "There was an error connecting to Bihang: $msg. Please check your internet connection and API credentials.";
         }
         set_transient($transient_name, $button_html);
         echo $button_html;
       } else {
-        echo "The Oklink plugin has not been properly set up - please visit the Oklink settings page in your administrator console.";
+        echo "The Bihang plugin has not been properly set up - please visit the Bihang settings page in your administrator console.";
       }
     }
 
@@ -142,7 +142,7 @@ class Oklink_Button extends WP_Widget {
     <p>
       <label for="<?php echo $this->get_field_id( 'currency' ); ?>"><?php _e( 'Amount:' ); ?></label>
       <span>
-        <select class="widefat oklink-currency" id="<?php echo $this->get_field_id( 'price_currency' ); ?>" name="<?php echo $this->get_field_name('price_currency'); ?>">
+        <select class="widefat bihang-currency" id="<?php echo $this->get_field_id( 'price_currency' ); ?>" name="<?php echo $this->get_field_name('price_currency'); ?>">
             <?php
             foreach ($this->currencies as $k => $v) {
               echo '<option value="' . $k . '"'
@@ -152,7 +152,7 @@ class Oklink_Button extends WP_Widget {
             ?>
         </select> 
 
-        <input class="widefat oklink-price" id="<?php echo $this->get_field_id( 'price' ); ?>" name="<?php echo $this->get_field_name( 'price' ); ?>" type="text" value="<?php echo esc_attr( $price ); ?>" />
+        <input class="widefat bihang-price" id="<?php echo $this->get_field_id( 'price' ); ?>" name="<?php echo $this->get_field_name( 'price' ); ?>" type="text" value="<?php echo esc_attr( $price ); ?>" />
       </span>
     </p>
     <p>
@@ -170,4 +170,4 @@ class Oklink_Button extends WP_Widget {
 } // Widget class 
 
 // register the widget
-add_action( 'widgets_init', create_function( '', "register_widget( 'Oklink_Button' );" ) );
+add_action( 'widgets_init', create_function( '', "register_widget( 'Bihang_Button' );" ) );

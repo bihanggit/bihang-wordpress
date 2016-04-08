@@ -1,13 +1,13 @@
-.oklink-currency {
+.bihang-currency {
 	width: 65px;
 }
-.oklink-price {
+.bihang-price {
 	width: 106px;
 }
-.oklink-toggle {
+.bihang-toggle {
 	cursor: pointer;
 }
-.oklink-advanced {
+.bihang-advanced {
 	/*
 	display: none;
 	margin-top: 7px; */

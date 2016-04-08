@@ -12,14 +12,14 @@ $wpsf_settings[] = array(
         array(
             'id' => 'api_key',
             'title' => 'API Key',
-            'desc' => "You can find this on the <a href='https://oklink.com/apiKey/index.do'>API Keys</a> page.",
+            'desc' => "You can find this on the <a href='https://bihang.com/apiKey/index.do'>API Keys</a> page.",
             'type' => 'text',
             'std' => ''
         ),
         array(
             'id' => 'api_secret',
             'title' => 'API Secret',
-            'desc' => "You can find this on the <a href='https://oklink.com/apiKey/index.do'>API Keys</a> page.",
+            'desc' => "You can find this on the <a href='https://bihang.com/apiKey/index.do'>API Keys</a> page.",
             'type' => 'password',
             'std' => ''
         ),

@@ -1,24 +1,24 @@
 jQuery(document).ready(function($) {
 
-	function oklinkToggle() {
+	function bihangToggle() {
 		var openText = "Hide Advanced Options";
 		var closedText = "Show Advanced Options";
 
-		$('.oklink-toggle').click(function() {
+		$('.bihang-toggle').click(function() {
 			var parent = $(this).parent();
 			if ($(this).hasClass('open')) {
 				$(this).removeClass('open');
 				$(this).text(closedText);
-				$(parent).children('.oklink-advanced').hide();
+				$(parent).children('.bihang-advanced').hide();
 			} else {
 				$(this).addClass('open');
 				$(this).text(openText);
-				$(parent).children('.oklink-advanced').show();
+				$(parent).children('.bihang-advanced').show();
 
 			}
 		});
 	}
 
-	$('.widget').hover(oklinkToggle);
+	$('.widget').hover(bihangToggle);
 
 });
